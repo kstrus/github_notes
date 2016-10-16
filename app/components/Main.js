@@ -2,7 +2,6 @@ var React = require('react');
 
 var Main = React.createClass({
     render: function() {
-        console.log(this.props);
         return (
             <div className = "main-container">
                 <nav className = "navbar navbar-default" role = "navigation">
