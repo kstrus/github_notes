@@ -10,7 +10,7 @@ var Main = React.createClass({
                     </div>
                 </nav>
                 <div className = "container">
-                    {this.props.children}
+                    { this.props.children }
                 </div>
             </div>
         )

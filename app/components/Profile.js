@@ -32,13 +32,13 @@ var Profile = React.createClass({
         return (
             <div className = "row">
                 <div className = "col-md-4">
-                    <UserInfo userName = {this.props.params.username} bio = {this.state.bio}/>
+                    <UserInfo username = {this.props.params.username} bio = {this.state.bio}/>
                 </div>
                 <div className = "col-md-4">
-                    <Repos userName = {this.props.params.username} repos = {this.state.repos}/>
+                    <Repos username = {this.props.params.username} repos = {this.state.repos}/>
                 </div>
                 <div className = "col-md-4">
-                    <Notes userName = {this.props.params.username} notes = {this.state.notes}/>
+                    <Notes username = {this.props.params.username} notes = {this.state.notes}/>
                 </div>
             </div>
         );
