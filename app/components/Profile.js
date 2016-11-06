@@ -10,7 +10,7 @@ var Profile = React.createClass({
 
     getInitialState: function() {
         return {
-            notes: [1,2,3],
+            notes: [],
             bio: {
                 name: 'Kasia'
             },
@@ -20,12 +20,19 @@ var Profile = React.createClass({
 
     componentDidMount: function() {
         this.ref = new Firebase('https://github-notetaker-c2e31.firebaseio.com/');
-        var childRef = this.ref.child(this.props.params.username);
-        this.bindAsArray(childRef, 'notes');
+        this.bindAsArray(this.ref.child(this.props.params.username), 'notes');
     },
 
     componentWillUnmount: function() {
         this.unbind('notes');
+    },
+
+    handleAddNote: function(newNote) {
+        this.ref.child(this.props.params.username).push(newNote);
+    },
+
+    handleRemoveNote: function(key) {
+        this.ref.child(this.props.params.username).child(key).remove();
     },
 
     render: function() {
@@ -38,7 +45,12 @@ var Profile = React.createClass({
                     <Repos username = {this.props.params.username} repos = {this.state.repos}/>
                 </div>
                 <div className = "col-md-4">
-                    <Notes username = {this.props.params.username} notes = {this.state.notes}/>
+                    <Notes
+                        username = {this.props.params.username}
+                        notes = {this.state.notes}
+                        addNote = {this.handleAddNote}
+                        removeNote = {this.handleRemoveNote}
+                    />
                 </div>
             </div>
         );
